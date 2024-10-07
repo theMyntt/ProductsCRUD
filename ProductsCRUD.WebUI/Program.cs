@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using ProductsCRUD.WebUI.Abstractions;
 using ProductsCRUD.WebUI.Components;
 using ProductsCRUD.WebUI.Data;
+using ProductsCRUD.WebUI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,8 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MySQL")),
         args => args.MigrationsAssembly(typeof(DatabaseContext).Assembly.FullName));
 });
+
+builder.Services.AddScoped<IProductsService, ProductsService>();
 
 var app = builder.Build();
 
