@@ -1,0 +1,40 @@
+﻿@page "/products/create"
+@using ProductsCRUD.WebUI.Abstractions
+@using ProductsCRUD.WebUI.Models
+@inject IProductsService _service;
+@rendermode InteractiveServer
+
+<PageTitle>ProductsCRUD.WebUI</PageTitle>
+
+<h3>Criar um novo produto</h3>
+
+<EditForm Model="product" OnValidSubmit="OnSubmit" FormName="CreationForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label for="name">Nome do Produto:</label>
+        <InputText id="name" @bind-Value="@product.Name" />
+        <ValidationMessage For="@(() => product.Name)" />
+    </div>
+
+    <div>
+        <label for="price">Preço:</label>
+        <InputNumber id="price" @bind-Value="@product.Price" />
+        <ValidationMessage For="@(() => product.Price)" />
+    </div>
+
+    <button type="submit">Criar Produto</button>
+</EditForm>
+
+@code {
+    private ProductEntity product { get; set; } = new();
+
+    public async Task OnSubmit()
+    {
+        product.Id = Guid.NewGuid();
+        product.Timestamp = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalMilliseconds;
+
+        await _service.SaveOneAsync(product);
+    }
+}
