@@ -2,6 +2,7 @@
 @using ProductsCRUD.WebUI.Abstractions
 @using ProductsCRUD.WebUI.Models
 @inject IProductsService _service;
+@inject NavigationManager _navigator;
 @rendermode InteractiveServer
 
 <PageTitle>ProductsCRUD.WebUI</PageTitle>
@@ -36,5 +37,7 @@
         product.Timestamp = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalMilliseconds;
 
         await _service.SaveOneAsync(product);
+
+        _navigator.NavigateTo("/");
     }
 }
