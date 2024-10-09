@@ -1,7 +1,8 @@
 ﻿@page "/products/{page:int}"
 @using ProductsCRUD.WebUI.Abstractions
-@using ProductsCRUD.WebUI.Models
+@inject NavigationManager _Navigation;
 @inject IProductsService _service;
+@rendermode InteractiveServer
 
 <h3>FindAll</h3>
 
@@ -10,6 +11,7 @@
         <th>Guid</th>
         <th>Nome</th>
         <th>Preço</th>
+        <th></th>
         <th></th>
     </tr>
     @if (products != null)
@@ -21,6 +23,7 @@
                 <td>@product.Name</td>
                 <td>@product.Price</td>
                 <td><a href="/products/edit/@product.Id">Editar</a></td>
+                <td><button @onclick="async () => await DeleteAsync(product)">Deletar</button></td>
             </tr>
         }
     }

@@ -30,5 +30,12 @@ namespace ProductsCRUD.WebUI.Components.Pages.Products
 
             return paginator;
         }
+
+        private async Task DeleteAsync(ProductEntity entity)
+        {
+            await _service.DeleteAsync(entity);
+            
+            _Navigation.NavigateTo("/");
+        }
     }
 }
