@@ -13,8 +13,18 @@ namespace ProductsCRUD.WebUI.Services
 
         public async Task UpdateAsync(ProductEntity input)
         {
-            _context.Products.Update(input);
-            await _context.SaveChangesAsync();
+            var entity = await this.GetProductsAsync(input.Id);
+            
+            if (entity != null)
+            {
+                entity = input;
+                _context.Products.Update(entity);
+                await _context.SaveChangesAsync();   
+            }
+            else
+            {
+                Console.WriteLine("Eh nulo");
+            }
         }
 
         public async Task<int> CountItemsAsync()

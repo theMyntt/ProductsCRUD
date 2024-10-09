@@ -10,6 +10,7 @@
         <th>Guid</th>
         <th>Nome</th>
         <th>Preço</th>
+        <th></th>
     </tr>
     @if (products != null)
     {
@@ -19,6 +20,7 @@
                 <th>@product.Id</th>
                 <td>@product.Name</td>
                 <td>@product.Price</td>
+                <td><a href="/products/edit/@product.Id">Editar</a></td>
             </tr>
         }
     }

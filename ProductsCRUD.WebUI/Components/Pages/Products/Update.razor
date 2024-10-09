@@ -1,0 +1,21 @@
+@page "/products/edit/{id:guid}"
+@using ProductsCRUD.WebUI.Abstractions
+@inject IProductsService _service;
+@inject NavigationManager _navigator;
+@rendermode InteractiveServer
+
+<EditForm Model="_entity" OnSubmit="Submit" FormName="EditProductForm">
+    <div id="creation-form">
+        <div>
+            <label for="name">Nome do Produto:</label>
+            <InputText id="name" @bind-Value="@_entity.Name" />
+        </div>
+
+        <div>
+            <label for="price">Preço:</label>
+            <InputNumber id="price" @bind-Value="@_entity.Price" />
+        </div>
+
+        <button type="submit">Criar Produto</button>
+    </div>
+</EditForm>
