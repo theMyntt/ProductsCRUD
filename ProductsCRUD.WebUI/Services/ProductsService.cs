@@ -32,6 +32,12 @@ namespace ProductsCRUD.WebUI.Services
                 .ToListAsync();
         }
 
+        public async Task<ProductEntity?> GetProductsAsync(Guid id)
+        {
+            return await _context.Products
+                .FirstOrDefaultAsync(x => x.Id == id);
+        }
+
         public async Task SaveOneAsync(ProductEntity input)
         {
             await _context.Products.AddAsync(input);
