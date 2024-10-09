@@ -11,6 +11,12 @@ namespace ProductsCRUD.WebUI.Services
 
         public ProductsService(DatabaseContext context) => _context = context;
 
+        public async Task UpdateAsync(ProductEntity input)
+        {
+            _context.Products.Update(input);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<int> CountItemsAsync()
         {
             return await _context.Products.CountAsync();
