@@ -11,9 +11,14 @@ namespace ProductsCRUD.WebUI.Services
 
         public ProductsService(DatabaseContext context) => _context = context;
 
-        public async Task<IEnumerable<ProductEntity>> GetProductsAsync()
+        public async Task<IEnumerable<ProductEntity>> GetProductsAsync(int page)
         {
-            return await _context.Products.ToListAsync();
+            int limit = 10;
+
+            return await _context.Products
+                .Skip((page - 1) * limit)
+                .Take(limit)
+                .ToListAsync();
         }
 
         public async Task SaveOneAsync(ProductEntity input)

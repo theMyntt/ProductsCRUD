@@ -4,7 +4,7 @@ namespace ProductsCRUD.WebUI.Abstractions
 {
     public interface IProductsService
     {
-        Task<IEnumerable<ProductEntity>> GetProductsAsync();
+        Task<IEnumerable<ProductEntity>> GetProductsAsync(int page);
         Task SaveOneAsync(ProductEntity input);
     }
 }
