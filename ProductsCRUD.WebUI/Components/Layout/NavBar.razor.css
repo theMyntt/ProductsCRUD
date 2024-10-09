@@ -1,0 +1,29 @@
+﻿body {
+}
+
+header {
+    background-color: cornflowerblue;
+    color: white;
+    padding: 0 30px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+}
+
+header > .links {
+    display: inherit;
+    align-items: inherit;
+    gap: 10px;
+}
+
+header > .links > a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+header > .links > a:hover {
+    font-weight: 900;
+}
