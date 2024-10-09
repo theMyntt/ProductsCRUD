@@ -6,5 +6,6 @@ namespace ProductsCRUD.WebUI.Abstractions
     {
         Task<IEnumerable<ProductEntity>> GetProductsAsync(int page);
         Task SaveOneAsync(ProductEntity input);
+        Task<int> CountItemsAsync();
     }
 }

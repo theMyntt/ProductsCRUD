@@ -11,6 +11,11 @@ namespace ProductsCRUD.WebUI.Services
 
         public ProductsService(DatabaseContext context) => _context = context;
 
+        public async Task<int> CountItemsAsync()
+        {
+            return await _context.Products.CountAsync();
+        }
+
         public async Task<IEnumerable<ProductEntity>> GetProductsAsync(int page)
         {
             int limit = 10;
