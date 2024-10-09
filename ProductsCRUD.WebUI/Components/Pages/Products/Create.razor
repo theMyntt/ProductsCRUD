@@ -13,19 +13,21 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <div>
-        <label for="name">Nome do Produto:</label>
-        <InputText id="name" @bind-Value="@product.Name" />
-        <ValidationMessage For="@(() => product.Name)" />
-    </div>
+    <div id="creation-form">
+        <div>
+            <label for="name">Nome do Produto:</label>
+            <InputText id="name" @bind-Value="@product.Name" />
+            <ValidationMessage For="@(() => product.Name)" />
+        </div>
 
-    <div>
-        <label for="price">Preço:</label>
-        <InputNumber id="price" @bind-Value="@product.Price" />
-        <ValidationMessage For="@(() => product.Price)" />
-    </div>
+        <div>
+            <label for="price">Preço:</label>
+            <InputNumber id="price" @bind-Value="@product.Price" />
+            <ValidationMessage For="@(() => product.Price)" />
+        </div>
 
-    <button type="submit">Criar Produto</button>
+        <button type="submit">Criar Produto</button>
+    </div>
 </EditForm>
 
 @code {
