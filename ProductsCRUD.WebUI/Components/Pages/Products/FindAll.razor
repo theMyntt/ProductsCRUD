@@ -1,0 +1,44 @@
+﻿@page "/products/"
+@using ProductsCRUD.WebUI.Abstractions
+@using ProductsCRUD.WebUI.Models
+@inject IProductsService _service;
+
+<h3>FindAll</h3>
+
+<style>
+    table, th, td {
+        border:1px solid black;
+    }
+</style>
+
+<table>
+    <tr>
+        <th>Guid</th>
+        <th>Nome</th>
+        <th>Preço</th>
+    </tr>
+    @if (products != null)
+    {
+        @foreach (var product in products)
+        {
+            <tr>
+                <th>@product.Id</th>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+            </tr>
+        }
+    }
+    else
+    {
+        <h1>Carregando...</h1>
+    }
+</table>
+
+@code {
+    private IEnumerable<ProductEntity>? products { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await _service.GetProductsAsync();
+    }
+}
