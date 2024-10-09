@@ -1,8 +1,12 @@
 ﻿body {
 }
 
-table, th, td {
-    border: 1px solid black;
+th {
+    background-color: #f1f1f1;
+}
+
+th, td {
+    padding: 10px
 }
 
 .paginator {
