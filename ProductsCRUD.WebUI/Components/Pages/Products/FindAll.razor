@@ -23,3 +23,10 @@
         }
     }
 </table>
+
+<div class="paginator">
+    @foreach(var pages in MakePaginator())
+    {
+        <a href="/products/@pages">@pages</a>
+    }
+</div>
