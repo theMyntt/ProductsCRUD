@@ -1,4 +1,4 @@
-﻿@page "/products/"
+﻿@page "/products/{page:int}"
 @using ProductsCRUD.WebUI.Abstractions
 @using ProductsCRUD.WebUI.Models
 @inject IProductsService _service;
@@ -33,12 +33,3 @@
         <h1>Carregando...</h1>
     }
 </table>
-
-@code {
-    private IEnumerable<ProductEntity>? products { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        products = await _service.GetProductsAsync();
-    }
-}
