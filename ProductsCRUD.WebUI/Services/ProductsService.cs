@@ -27,6 +27,12 @@ namespace ProductsCRUD.WebUI.Services
             }
         }
 
+        public async Task DeleteAsync(ProductEntity input)
+        {
+            _context.Products.Remove(input);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<int> CountItemsAsync()
         {
             return await _context.Products.CountAsync();

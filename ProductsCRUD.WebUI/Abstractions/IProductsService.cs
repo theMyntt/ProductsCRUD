@@ -8,6 +8,7 @@ namespace ProductsCRUD.WebUI.Abstractions
         Task<ProductEntity?> GetProductsAsync(Guid id);
         Task SaveOneAsync(ProductEntity input);
         Task UpdateAsync(ProductEntity input);
+        Task DeleteAsync(ProductEntity input);
         Task<int> CountItemsAsync();
     }
 }
